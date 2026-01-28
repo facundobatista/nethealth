@@ -1,0 +1,20 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "facundo@taniquetil.com.ar",
+                "Name": "Facundo Batista"
+            }
+        ],
+        "Category": "System Information",
+        "Description": "A widget to show internet connectivity health.",
+        "Icon": "network-modem",
+        "Id": "com.facundobatista.nethealth",
+        "Name": "Network Health",
+        "Version": "1",
+        "Website": "https://github.com/facundobatista/nethealth",
+        "BugReportUrl": "https://github.com/facundobatista/nethealth/issues"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "KPackageStructure": "Plasma/Applet" 
+}
