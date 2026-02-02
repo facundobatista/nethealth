@@ -25,6 +25,7 @@ Item {
     property var sessionBtnIconSource: "media-playback-start"
     property string tooltipText: "Network Health paused"
     property real yMaxValue: 100
+    property string messageText: ""
 
     Plasmoid.status: PlasmaCore.Types.PassiveStatus
     Plasmoid.backgroundHints: PlasmaCore.Types.DefaultBackground | PlasmaCore.Types.ConfigurableBackground
@@ -43,25 +44,27 @@ Item {
         engine: "executable"
         connectedSources: []
         property var callbacks: ({})
+        
         onNewData: {
             var stdout = data["stdout"]
-
+            var stderr = data["stderr"]
+            
             if (callbacks[sourceName] !== undefined) {
-                callbacks[sourceName](stdout);
+                callbacks[sourceName](stdout, stderr);
             }
-
-            exited(sourceName, stdout)
+            
+            exited(sourceName, stdout, stderr)
             disconnectSource(sourceName) // cmd finished
         }
-
+        
         function exec(cmd, onNewDataCallback) {
             if (onNewDataCallback !== undefined){
                 callbacks[cmd] = onNewDataCallback
             }
             connectSource(cmd)
-
         }
-        signal exited(string sourceName, string stdout)
+        
+        signal exited(string sourceName, string stdout, string stderr)
     }
 
     Plasmoid.toolTipMainText: tooltipText
@@ -121,6 +124,17 @@ Item {
         ColumnLayout {
             anchors.fill: parent
             spacing: PlasmaCore.Units.smallSpacing
+
+            PlasmaComponents.Label {
+                id: messageLabel
+                Layout.fillWidth: true
+                Layout.preferredHeight: text !== "" ? implicitHeight : 0
+                visible: text !== ""
+                
+                text: root.messageText
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignHCenter
+            }
 
             Item {
                 id: chartArea
@@ -273,9 +287,13 @@ Item {
             tooltipText = "Poor: " + latency + " ms"
             customIconSource = plasmoid.file("", "icons/health-warning.svg")
         }
-        else {
+        else if (latency < 1000) {
             tooltipText = "Bad: " + latency + " ms"
             customIconSource = plasmoid.file("", "icons/health-problem.svg")
+        }
+        else {
+            tooltipText = "Horrible: " + latency + " ms"
+            customIconSource = plasmoid.file("", "icons/health-broken.svg")
         }
 
     }
@@ -283,8 +301,26 @@ Item {
     function doPing() {
         // execute ping script 
         var scriptPath = plasmoid.file("", "pinger.py")
-        executable.exec("python3 " + scriptPath, function(stdout) {
-            var latency = parseInt(stdout.trim())
+        executable.exec("python3 " + scriptPath, function(stdout, stderr) {
+
+            if (stderr && stderr.trim() !== "") {
+                messageText = "Internal error, traceback in /tmp/nethealth-error.txt"
+                var encoded = Qt.btoa(stderr)
+                executable.exec("python3  -c \"import base64; open('/tmp/nethealth-error.txt', 'wb').write(base64.b64decode('" + encoded + "'.encode()))\" ")
+                customIconSource = plasmoid.file("", "icons/error.svg")
+                pause()
+                return
+            }
+
+            var output = stdout.trim()
+            var latency = parseInt(output)
+
+            if (isNaN(latency)) {
+                messageText = "Internal error, wasn't able to convert" + output
+                customIconSource = plasmoid.file("", "icons/error.svg")
+                pause()
+                return
+            }
             refreshState(latency)
         })
     }

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800px"
+   height="800px"
+   viewBox="0 0 16 16"
+   version="1.1"
+   class="si-glyph si-glyph-network"
+   id="svg24"
+   sodipodi:docname="error.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview26"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.28375"
+     inkscape:cx="170.59396"
+     inkscape:cy="403.50536"
+     inkscape:window-width="2560"
+     inkscape:window-height="1338"
+     inkscape:window-x="0"
+     inkscape:window-y="36"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg24" />
+  <title
+     id="title2">91</title>
+  <defs
+     id="defs4" />
+  <g
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     id="g22"
+     transform="matrix(0.89626714,0,0,0.89626714,0.8306566,0.83867049)"
+     style="fill:#c8c8c8;fill-opacity:1">
+    <g
+       fill="#434343"
+       id="g20"
+       style="fill:#c8c8c8;fill-opacity:1">
+      <path
+         d="m 11.783,10.094 c -1.699,0.998 -3.766,1.684 -5.678,1.95 -0.112,0.388 -0.354,0.718 -0.684,0.934 0.512,1.093 1.249,2.087 2.139,2.987 2.512,0.12 5.041,-0.938 6.702,-3.074 0.029,-0.038 0.055,-0.08 0.083,-0.119 -0.244,-0.914 -0.648,-1.784 -1.145,-2.644 -0.09,0.026 -0.176,0.046 -0.261,0.062 -0.143,0.04 -0.291,0.068 -0.446,0.068 -0.255,0 -0.493,-0.062 -0.71,-0.164 z"
+         class="si-glyph-fill"
+         id="path6"
+         style="fill:#c8c8c8;fill-opacity:1" />
+      <path
+         d="M 9.051,5.492 C 8.409,5.025 7.735,4.607 7.047,4.236 6.795,4.84 6.199,5.263 5.502,5.263 5.377,5.263 5.257,5.247 5.14,5.221 4.733,6.756 4.516,8.383 4.629,9.915 5.393,9.973 6.011,10.532 6.149,11.269 7.844,10.99 9.619,10.39 11.116,9.531 10.93,9.26 10.819,8.934 10.819,8.582 10.819,8.169 10.975,7.796 11.222,7.504 10.568,6.768 9.833,6.061 9.051,5.492 Z"
+         class="si-glyph-fill"
+         id="path8"
+         style="fill:#c8c8c8;fill-opacity:1" />
+      <path
+         d="M 4,9.989 C 3.863,8.355 4.104,6.597 4.541,4.957 4.111,4.653 3.828,4.155 3.828,3.588 3.828,3.391 3.867,3.202 3.932,3.026 3.276,2.904 2.618,2.828 1.958,2.779 1.869,2.883 1.773,2.983 1.689,3.093 -0.04,5.317 -0.405,8.165 0.459,10.64 1.23,10.969 2.025,11.187 2.856,11.306 2.959,10.681 3.408,10.178 4,9.989 Z"
+         class="si-glyph-fill"
+         id="path10"
+         style="fill:#c8c8c8;fill-opacity:1" />
+      <path
+         d="m 13.928,9.689 c -0.029,0.037 -0.064,0.067 -0.096,0.1 0.433,0.736 0.799,1.482 1.053,2.268 1.117,-1.89 1.371,-4.099 0.832,-6.122 -0.09,0.133 -0.176,0.267 -0.271,0.396 -0.436,0.601 -0.875,1.217 -1.354,1.772 0.045,0.152 0.076,0.311 0.076,0.479 v 0.004 c 0.084,0.374 0.013,0.779 -0.24,1.103 z"
+         class="si-glyph-fill"
+         id="path12"
+         style="fill:#c8c8c8;fill-opacity:1" />
+      <path
+         d="m 7.164,3.447 c 0.799,0.414 1.584,0.898 2.33,1.44 0.84,0.611 1.627,1.373 2.324,2.164 0.207,-0.092 0.434,-0.145 0.676,-0.145 0.5,0 0.945,0.225 1.252,0.572 C 14.15,6.986 14.529,6.456 14.907,5.938 15.101,5.67 15.279,5.395 15.451,5.118 14.945,3.807 14.097,2.612 12.909,1.687 11.364,0.485 9.515,-0.057 7.701,0.012 7.586,0.158 7.472,0.302 7.362,0.451 6.961,1.003 6.623,1.531 6.322,2.088 c 0.039,0.029 0.064,0.066 0.1,0.1 0.417,0.276 0.697,0.734 0.742,1.259 z"
+         class="si-glyph-fill"
+         id="path14"
+         style="stroke-width:0.99999203;stroke-dasharray:none;fill:#c8c8c8;fill-opacity:1" />
+      <path
+         d="m 2.879,11.965 c -0.711,-0.098 -1.402,-0.246 -2.07,-0.487 0.519,1.075 1.278,2.053 2.285,2.836 1.066,0.829 2.277,1.343 3.521,1.561 -0.722,-0.817 -1.312,-1.706 -1.753,-2.66 -0.115,0.024 -0.234,0.04 -0.357,0.04 -0.792,-0.001 -1.451,-0.552 -1.626,-1.29 z"
+         class="si-glyph-fill"
+         id="path16"
+         style="fill:#c8c8c8;fill-opacity:1" />
+      <path
+         d="M 4.514,2.242 C 4.825,1.9 5.277,1.753 5.713,1.826 6.025,1.24 6.377,0.683 6.794,0.104 5.236,0.342 3.752,1.04 2.547,2.166 3.137,2.232 3.723,2.306 4.308,2.418 4.371,2.354 4.441,2.297 4.514,2.242 Z"
+         class="si-glyph-fill"
+         id="path18"
+         style="fill:#c8c8c8;fill-opacity:1" />
+    </g>
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-size:12.2792px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;text-align:end;text-anchor:end;opacity:1;fill:#d50000;fill-opacity:1;stroke-width:2.00466;stop-color:#000000"
+     x="10.523075"
+     y="10.336556"
+     id="text904"
+     transform="scale(1.1709614,0.85399911)"><tspan
+       sodipodi:role="line"
+       id="tspan902"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';fill:#d50000;fill-opacity:1;stroke-width:2.00466"
+       x="10.523075"
+       y="10.336556">X</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:7.03451px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;text-align:end;text-anchor:end;fill:#d50000;fill-opacity:1;stroke-width:1.14843;stop-color:#000000"
+     x="14.342754"
+     y="14.753377"
+     id="text904-7"><tspan
+       sodipodi:role="line"
+       id="tspan902-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';fill:#d50000;fill-opacity:1;stroke-width:1.14843"
+       x="14.342754"
+       y="14.753377">ERR</tspan></text>
+</svg>
