@@ -20,7 +20,7 @@ Item {
     Plasmoid.switchHeight: PlasmaCore.Units.gridUnit * 8
 
     property var stateVal: 1
-    property var customIconSource: plasmoid.file( "", "icons/unknown.svg")
+    property var customIconSource: plasmoid.file( "", "icons/unknown.svg")  // will be replaced on first measure
     property var sessionBtnText: "Start"
     property var sessionBtnIconSource: "media-playback-start"
     property string tooltipText: "Network Health paused"
@@ -142,18 +142,6 @@ Item {
                 Layout.fillHeight: true
 
                 Charts.GridLines {
-                    id: horizontalLines
-                    anchors.fill: lineChart
-                    chart: lineChart
-                    major.frequency: 2
-                    major.lineWidth: 2
-                    major.color: Qt.rgba(0.8, 0.8, 0.8, 1.0)
-                    minor.frequency: 1
-                    minor.lineWidth: 1
-                    minor.color: Qt.rgba(0.8, 0.8, 0.8, 1.0)
-                }
-
-                Charts.GridLines {
                     id: verticalLines
                     anchors.fill: lineChart
                     chart: lineChart
@@ -195,7 +183,7 @@ Item {
                     }
                     
                     antialiasing: true
-                    colorSource: Charts.SingleValueSource { value: "#3daee9" }
+                    colorSource: Charts.SingleValueSource { value: "#0000ff" }
                     nameSource: Charts.SingleValueSource { value: "Network Latency" }
                     
                     valueSources: [
@@ -241,7 +229,6 @@ Item {
         timer.start()
         sessionBtnText = "Pause"
         sessionBtnIconSource = "media-playback-pause"
-        customIconSource = plasmoid.file("", "icons/unknown.svg")
         Plasmoid.status = PlasmaCore.Types.ActiveStatus
 
     }
@@ -250,6 +237,7 @@ Item {
         timer.stop()
         tooltipText = "Network Health paused"
         sessionBtnText = "Start"
+        customIconSource = plasmoid.file("", "icons/unknown.svg")  // will remain in "?" if not running
         sessionBtnIconSource = "media-playback-start"
     }
 
