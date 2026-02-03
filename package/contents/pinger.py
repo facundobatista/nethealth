@@ -4,6 +4,7 @@
 
 import subprocess
 import re
+import sys
 
 
 def ping(cmd):
@@ -26,8 +27,9 @@ def main(host, timeout):
 
 
 if __name__ == "__main__":
+    host = sys.argv[1]
+
     # we may make this configurable when calling the script
-    host = "1.1.1.1"
     timeout = 2  # seconds
 
     main(host, timeout)

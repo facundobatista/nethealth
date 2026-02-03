@@ -289,7 +289,7 @@ Item {
     function doPing() {
         // execute ping script 
         var scriptPath = plasmoid.file("", "pinger.py")
-        executable.exec("python3 " + scriptPath, function(stdout, stderr) {
+        executable.exec("python3 " + scriptPath + " " + plasmoid.configuration.ip_to_ping, function(stdout, stderr) {
 
             if (stderr && stderr.trim() !== "") {
                 messageText = "Internal error, traceback in /tmp/nethealth-error.txt"
