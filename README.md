@@ -2,7 +2,7 @@
 
 A plasmoid for KDE to easily see the internet connectivity health.
 
-![logo](https://github.com/facundobatista/nethealth/blob/main/media/logo-256.png?raw=True)
+![logo](https://github.com/facundobatista/nethealth/blob/main/media/icon-256.png?raw=True)
 
 It presents an icon with several colors:
 - a greyed out that will not caught attention to your eye if ping time is under 10 milliseconds
