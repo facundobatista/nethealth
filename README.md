@@ -1,12 +1,20 @@
 # nethealth
+
 A plasmoid for KDE to easily see the internet connectivity health.
 
-Probably is better to just install it from [the KDE store](https://www.pling.com/p/2346355/), but if want a development version, see below for how to install from project.
+![logo](https://github.com/facundobatista/nethealth/blob/main/media/logo-256.png?raw=True)
 
 It presents an icon with several colors:
 - a greyed out that will not caught attention to your eye if ping time is under 10 milliseconds
 - yellow if its greater than that but still below 100 milliseconds
-- organge:
+- orange: more than 100 ms but less than 1 second
+- red: more than 1s or no ping at all
+
+Clicking in the icon will present the measurement of previous pings:
+
+![sshot](https://github.com/facundobatista/nethealth/blob/main/media/sshot.png?raw=True)
+
+Probably is better to just install it from [the KDE store](https://www.pling.com/p/2346355/), but if want a development version, see below for how to install from project.
 
 
 ## some tips to facilitate development
