@@ -17,7 +17,7 @@ Clicking in the icon will present the measurement of previous pings:
 Probably is better to just install it from [the KDE store](https://www.pling.com/p/2346355/), but if want a development version, see below for how to install from project.
 
 
-## some tips to facilitate development
+## Some tips to facilitate development
 
 This will show the "full representation" of the plasmoid (what you see if you left-click on it):
 ```
@@ -26,15 +26,15 @@ plasmoidviewer -a package -l topedge -f horizontal
 
 This is to install the plasmoid from the project:
 ```
-kpackagetool5 -i package
+kpackagetool6 -i package
 ```
 
 Then, if you do changes, you need to update it:
 ```
-kpackagetool5 -u package
+kpackagetool6 -u package
 ```
 
 In both cases, `plasmashell` needs to be restarted (totally sucks):
 ```
-kquitapp5 plasmashell && kstart5 plasmashell
+kquitapp6 plasmashell && kstart plasmashell
 ```

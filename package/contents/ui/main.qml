@@ -1,26 +1,24 @@
-﻿import QtQuick 2.2
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.0 as Controls
-import QtQuick.Window 2.0
-import QtGraphicalEffects 1.0
-import QtMultimedia 5.4
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Window
 
-import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 2.0 as PlasmaComponents
-import org.kde.plasma.private.kicker 0.1 as Kicker
-
-import org.kde.quickcharts 1.0 as Charts
+import org.kde.kirigami as Kirigami
+import org.kde.plasma.plasmoid
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.components as PlasmaComponents
+import org.kde.plasma.plasma5support as P5Support
+import org.kde.quickcharts as Charts
+import org.kde.quickcharts.controls as ChartsControls
 
 
-Item {
+PlasmoidItem {
     id: root
 
-    Plasmoid.switchWidth: PlasmaCore.Units.gridUnit * 8
-    Plasmoid.switchHeight: PlasmaCore.Units.gridUnit * 8
+    switchWidth: Kirigami.Units.gridUnit * 8
+    switchHeight: Kirigami.Units.gridUnit * 8
 
     property var stateVal: 1
-    property var customIconSource: plasmoid.file( "", "icons/unknown.svg")  // will be replaced on first measure
+    property var customIconSource: Qt.resolvedUrl("../icons/unknown.svg")  // will be replaced on first measure
     property var sessionBtnText: "Start"
     property var sessionBtnIconSource: "media-playback-start"
     property string tooltipText: "Network Health paused"
@@ -39,13 +37,13 @@ Item {
         onTriggered: doPing()
     }
 
-    PlasmaCore.DataSource {
+    P5Support.DataSource {
         id: executable
         engine: "executable"
         connectedSources: []
         property var callbacks: ({})
         
-        onNewData: {
+        onNewData: function(sourceName, data) {
             var stdout = data["stdout"]
             var stderr = data["stderr"]
             
@@ -67,17 +65,17 @@ Item {
         signal exited(string sourceName, string stdout, string stderr)
     }
 
-    Plasmoid.toolTipMainText: tooltipText
+    toolTipMainText: tooltipText
 
     Component.onCompleted: {
         start()
     }
 
-    Plasmoid.compactRepresentation: MouseArea {
+    compactRepresentation: MouseArea {
         id: compactRoot
 
-        Layout.minimumWidth: PlasmaCore.Units.iconSizes.small
-        Layout.minimumHeight: PlasmaCore.Units.iconSizes.small
+        Layout.minimumWidth: Kirigami.Units.iconSizes.small
+        Layout.minimumHeight: Kirigami.Units.iconSizes.small
         Layout.preferredHeight: Layout.minimumHeight
         Layout.maximumHeight: Layout.minimumHeight
         Layout.preferredWidth: root.width
@@ -86,22 +84,23 @@ Item {
 
         acceptedButtons: Qt.LeftButton
         onClicked: {
-            plasmoid.expanded = !plasmoid.expanded
+            root.expanded = !root.expanded
         }
 
         RowLayout {
             id: row
-            Layout.margins: PlasmaCore.Units.smallSpacing
+            Layout.margins: Kirigami.Units.smallSpacing
 
             Item {
                 Layout.preferredHeight: compactRoot.height
                 Layout.preferredWidth: compactRoot.height
 
-                PlasmaCore.IconItem {
+                Image {
                     id: mainIcon
-                    height: parent.height
-                    width: parent.width
+                    anchors.fill: parent
                     source: customIconSource
+                    sourceSize: Qt.size(width * Screen.devicePixelRatio, height * Screen.devicePixelRatio)
+                    fillMode: Image.PreserveAspectFit
                     smooth: true
                 }
             }
@@ -113,17 +112,17 @@ Item {
         id: listModel
     }
 
-    Plasmoid.fullRepresentation: Item {
+    fullRepresentation: Item {
         id: fullRoot
 
-        Layout.minimumWidth: PlasmaCore.Units.gridUnit * 12
-        Layout.maximumWidth: PlasmaCore.Units.gridUnit * 18
-        Layout.minimumHeight: PlasmaCore.Units.gridUnit * 11
-        Layout.maximumHeight: PlasmaCore.Units.gridUnit * 18
+        Layout.minimumWidth: Kirigami.Units.gridUnit * 12
+        Layout.maximumWidth: Kirigami.Units.gridUnit * 18
+        Layout.minimumHeight: Kirigami.Units.gridUnit * 11
+        Layout.maximumHeight: Kirigami.Units.gridUnit * 18
 
         ColumnLayout {
             anchors.fill: parent
-            spacing: PlasmaCore.Units.smallSpacing
+            spacing: Kirigami.Units.smallSpacing
 
             PlasmaComponents.Label {
                 id: messageLabel
@@ -141,11 +140,11 @@ Item {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
-                Charts.GridLines {
+                ChartsControls.GridLines {
                     id: verticalLines
                     anchors.fill: lineChart
                     chart: lineChart
-                    direction: Charts.GridLines.Vertical;
+                    direction: ChartsControls.GridLines.Vertical;
                     major.count: 4
                     major.lineWidth: 2
                     major.color: Qt.rgba(0.8, 0.8, 0.8, 1.0)
@@ -154,16 +153,16 @@ Item {
                     minor.color: Qt.rgba(0.8, 0.8, 0.8, 1.0)
                 }
 
-                Charts.AxisLabels {
+                ChartsControls.AxisLabels {
                     id: yAxisLabels
                     anchors {
                         left: parent.left
                         top: parent.top
                         bottom: parent.bottom
                     }
-                    direction: Charts.AxisLabels.VerticalBottomTop
+                    direction: ChartsControls.AxisLabels.VerticalBottomTop
                     delegate: PlasmaComponents.Label { 
-                        text: Charts.AxisLabels.label 
+                        text: ChartsControls.AxisLabels.label 
                     }
                     source: Charts.ChartAxisSource { 
                         chart: lineChart
@@ -212,8 +211,7 @@ Item {
                 id: sessionBtn
                 Layout.alignment: Qt.AlignHCenter
                 text: sessionBtnText
-                implicitWidth: minimumWidth
-                iconSource: sessionBtnIconSource
+                icon.name: sessionBtnIconSource
                 onClicked: {
                     if (sessionBtnText == "Start") {
                         start()
@@ -237,7 +235,7 @@ Item {
         timer.stop()
         tooltipText = "Network Health paused"
         sessionBtnText = "Start"
-        customIconSource = plasmoid.file("", "icons/unknown.svg")  // will remain in "?" if not running
+        customIconSource = Qt.resolvedUrl("../icons/unknown.svg")  // will remain in "?" if not running
         sessionBtnIconSource = "media-playback-start"
     }
 
@@ -265,37 +263,37 @@ Item {
         if (latency == 0) {
             // special case of not connection at all
             tooltipText = "No connection"
-            customIconSource = plasmoid.file("", "icons/health-broken.svg")
+            customIconSource = Qt.resolvedUrl("../icons/health-broken.svg")
         }
         else if (latency < 10) {
             tooltipText = "Excellent: " + latency + " ms"
-            customIconSource = plasmoid.file("", "icons/health-ok.svg")
+            customIconSource = Qt.resolvedUrl("../icons/health-ok.svg")
         }
         else if (latency < 100) {
             tooltipText = "Poor: " + latency + " ms"
-            customIconSource = plasmoid.file("", "icons/health-warning.svg")
+            customIconSource = Qt.resolvedUrl("../icons/health-warning.svg")
         }
         else if (latency < 1000) {
             tooltipText = "Bad: " + latency + " ms"
-            customIconSource = plasmoid.file("", "icons/health-problem.svg")
+            customIconSource = Qt.resolvedUrl("../icons/health-problem.svg")
         }
         else {
             tooltipText = "Horrible: " + latency + " ms"
-            customIconSource = plasmoid.file("", "icons/health-broken.svg")
+            customIconSource = Qt.resolvedUrl("../icons/health-broken.svg")
         }
 
     }
 
     function doPing() {
         // execute ping script 
-        var scriptPath = plasmoid.file("", "pinger.py")
-        executable.exec("python3 " + scriptPath + " " + plasmoid.configuration.ip_to_ping, function(stdout, stderr) {
+        var scriptPath = Qt.resolvedUrl("../pinger.py").toString().replace("file://", "")
+        executable.exec("python3 '" + scriptPath + "' " + Plasmoid.configuration.ip_to_ping, function(stdout, stderr) {
 
             if (stderr && stderr.trim() !== "") {
                 messageText = "Internal error, traceback in /tmp/nethealth-error.txt"
                 var encoded = Qt.btoa(stderr)
                 executable.exec("python3  -c \"import base64; open('/tmp/nethealth-error.txt', 'wb').write(base64.b64decode('" + encoded + "'.encode()))\" ")
-                customIconSource = plasmoid.file("", "icons/error.svg")
+                customIconSource = Qt.resolvedUrl("../icons/error.svg")
                 pause()
                 return
             }
@@ -305,7 +303,7 @@ Item {
 
             if (isNaN(latency)) {
                 messageText = "Internal error, wasn't able to convert" + output
-                customIconSource = plasmoid.file("", "icons/error.svg")
+                customIconSource = Qt.resolvedUrl("../icons/error.svg")
                 pause()
                 return
             }

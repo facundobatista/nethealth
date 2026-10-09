@@ -15,18 +15,10 @@
         "Id": "com.facundobatista.nethealth",
         "License": "GPL",
         "Name": "Network Health",
-        "ServiceTypes": [
-            "Plasma/Applet"
-        ],
-        "Version": "1",
+        "Version": "2",
         "Website": "https://github.com/facundobatista/nethealth",
         "BugReportUrl": "https://github.com/facundobatista/nethealth/issues"
     },
     "KPackageStructure": "Plasma/Applet",
-    "X-Plasma-API-Minimum-Version": "6.0",
-    "X-Plasma-API": "declarativeappletscript",
-    "X-Plasma-MainScript": "ui/main.qml",
-    "X-Plasma-Provides": [
-        "com.facundobatista.nethealth"
-    ]
+    "X-Plasma-API-Minimum-Version": "6.0"
 }
